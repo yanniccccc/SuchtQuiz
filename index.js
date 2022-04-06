@@ -40,7 +40,7 @@ var modules = [
         answer: ['Fürsorgliche Familie', 'Hoher Selbstwert', 'Exzellentes Aussehen', 'Interessante Hobbys'],
         explanation: 'Eine liebevolle und fürsorgliche Familie, interessante Hobbys und ein hoher Selbstwert können Dich vor einer Sucht schützen.'
     },{
-        double: false,
+        double: true,
         used: 'false',
         correct: '1983',
         categorie: 'Allgemein',
@@ -96,7 +96,7 @@ var modules = [
         answer: ['Richtig', 'Falsch'],
         explanation: 'Ivan Goldberg, ein Psychiater aus New York, schrieb im Jahr 1995 einen Artikel über Online-Sucht. Schon beachtlich, wenn man bedenkt, dass das kommerzielle Internet, so wie wir es heute kennen, gar nicht viel älter ist. Eigentlich war Goldbergs Artikel als Scherz gemeint. Dennoch nahmen sich in der Folge mehr und mehr Forscher dieses Themas an. Kein Scherz'
     },{
-        double: false,
+        double: true,
         used: 'false',
         correct: 'Richtig',
         categorie: 'stimmts',
@@ -104,7 +104,7 @@ var modules = [
         answer: ['Richtig', 'Falsch'],
         explanation: 'Seit 2018 ist die Online-Spielsucht Bestandteil des ICD 11 und als Krankheit offiziell anerkannt. Häufig werden die Begriffe Medien-Sucht, Online-Sucht und Online-Spielsucht synonym gebraucht. Tatsächlich handelt es sich allerdings um unterschiedliche Störungsbilder.'
     },{
-        double: false,
+        double: true,
         used: 'false',
         correct: 'Auf Deine innere Uhr hören',
         categorie: 'Sucht',
@@ -144,7 +144,7 @@ var modules = [
         answer: ['220000', '250500', '326800'],
         explanation: 'Im Jahr 2019 litten ungefähr 220000 Menschen in Deutschland an Mediensucht.'
     },{
-        double: false,
+        double: true,
         used: 'false',
         correct: 'bis 2 Jahre',
         categorie: 'Datenschutz',
@@ -152,7 +152,7 @@ var modules = [
         answer: ['bis 2 Jahre', 'bis 5 Jahre', 'bis 10 Monate'],
         explanation: 'Das fotografieren in diesem höchst persönlichen Lebensbereich nicht erlaubt und stellt eine Straftat dar'
     },{
-        double: false,
+        double: true,
         used: 'false',
         correct: '1985',
         categorie: 'Promi',
@@ -203,7 +203,7 @@ var modules = [
         double: false,
         used: 'false',
         correct: 'Bonus',
-        categorie: 'Allgemein',
+        categorie: 'Bonus',
         question: 'Das Suchtpotential von welchem Spiel-Genres ist am größten?',
         answer: ['RTS(Real-Time-Strategy', 'First-Person-Shooter', 'Echtzeit Browsergames'],
         explanation: 'Ähnlich wie bei Online-Rollenspielen, handelt es sich auch bei Echtzeit Browsergames um so genannte „konstante Onlinewelten“. Das Besondere ist, dass diese Welten in der Regel kein vorgegebenes Ende haben und zudem auch weiterlaufen, wenn man sich nicht einloggt. Der Aufforderungscharakter, sich so oft wie möglich einzuloggen und somit auch das Suchtpotential, ist hier daher besonders hoch.'
@@ -211,7 +211,7 @@ var modules = [
         double: false,
         used: 'false',
         correct: 'Bonus',
-        categorie: 'Allgemein',
+        categorie: 'Bonus',
         question: 'Das Suchtpotential von welchem Spiel-Genres ist am größten?',
         answer: ['RTS(Real-Time-Strategy', 'First-Person-Shooter', 'Echtzeit Browsergames'],
         explanation: 'Ähnlich wie bei Online-Rollenspielen, handelt es sich auch bei Echtzeit Browsergames um so genannte „konstante Onlinewelten“. Das Besondere ist, dass diese Welten in der Regel kein vorgegebenes Ende haben und zudem auch weiterlaufen, wenn man sich nicht einloggt. Der Aufforderungscharakter, sich so oft wie möglich einzuloggen und somit auch das Suchtpotential, ist hier daher besonders hoch.'
@@ -219,7 +219,7 @@ var modules = [
         double: false,
         used: 'false',
         correct: 'Bonus',
-        categorie: 'Allgemein',
+        categorie: 'Bonus',
         question: 'Das Suchtpotential von welchem Spiel-Genres ist am größten?',
         answer: ['RTS(Real-Time-Strategy', 'First-Person-Shooter', 'Echtzeit Browsergames'],
         explanation: 'Ähnlich wie bei Online-Rollenspielen, handelt es sich auch bei Echtzeit Browsergames um so genannte „konstante Onlinewelten“. Das Besondere ist, dass diese Welten in der Regel kein vorgegebenes Ende haben und zudem auch weiterlaufen, wenn man sich nicht einloggt. Der Aufforderungscharakter, sich so oft wie möglich einzuloggen und somit auch das Suchtpotential, ist hier daher besonders hoch.'
@@ -227,7 +227,7 @@ var modules = [
         double: false,
         used: 'false',
         correct: 'Bonus',
-        categorie: 'Allgemein',
+        categorie: 'Bonus',
         question: 'Das Suchtpotential von welchem Spiel-Genres ist am größten?',
         answer: ['RTS(Real-Time-Strategy', 'First-Person-Shooter', 'Echtzeit Browsergames'],
         explanation: 'Ähnlich wie bei Online-Rollenspielen, handelt es sich auch bei Echtzeit Browsergames um so genannte „konstante Onlinewelten“. Das Besondere ist, dass diese Welten in der Regel kein vorgegebenes Ende haben und zudem auch weiterlaufen, wenn man sich nicht einloggt. Der Aufforderungscharakter, sich so oft wie möglich einzuloggen und somit auch das Suchtpotential, ist hier daher besonders hoch.'
@@ -238,12 +238,15 @@ var modules = [
 let scoreOne = 0;
 let scoreTwo = 0;
 let turn = true;
+
+let propability = 0;
+
 document.getElementById('score').innerHTML = 'Team 1: ' + scoreOne + '      |      Team 2: ' + scoreTwo;
 
 //add bonus questions
 modules.forEach((element) => {
     var index = Math.floor(Math.random() * 100);
-    if(index <= 10) {
+    if(index <= propability) {
         element.double = true;
     }
     console.log(index);
@@ -254,7 +257,7 @@ const buttonClicked = (clickedName) => {
     clickedName.disabled = true;
     const name = clickedName.className;
     var elements = [];
-    
+    document.getElementById('score').innerHTML = '';
 
     
     var question;
@@ -309,10 +312,14 @@ const buttonClicked = (clickedName) => {
             button.classList.add("newButtons");
             button.style.marginRight = "2%";
             button.style.marginTop = "1%";
-            button.onclick = function() { newButtons(question, this, clickedName) }
+            button.onclick = function() {newButtons(question, this, clickedName)};
             button.appendChild(text);
 
             document.getElementById("canvas").appendChild(button);
+        }
+        if ( question.double ) {
+            document.getElementById('bonus').innerHTML = 'BONUS FRAGE 2x PUNKTE';
+            document.getElementById('test').style.marginTop = '0';
         }
         document.getElementById("test").innerHTML = question.question;
 }
@@ -325,6 +332,10 @@ function newButtons(givenModule, button, parentButton) {
     while (elements.length > 0) {
         elements[0].parentNode.removeChild(elements[0]);
     }
+    document.getElementById('bonus').innerHTML = '';
+    document.getElementById('test').style.marginTop = '2rem';
+
+    document.getElementById('score').innerHTML = 'Team 1: ' + scoreOne + '      |      Team 2: ' + scoreTwo;
 
     if (button.innerText === givenModule.correct) {
         isCorrect = true;       
