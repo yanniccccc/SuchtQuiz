@@ -296,7 +296,7 @@ const buttonClicked = (clickedName) => {
         while (true) {
             var index = Math.floor(Math.random() * elements.length);
 
-            if (elements[index].used != "true") {
+            if (elements[index].used != "true" && (!elements[index].double || clickedName.innerHTML != '500')) {
                 question = elements[index];
                 elements[index].used = "true";
                 break;
